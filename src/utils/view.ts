@@ -1,17 +1,41 @@
+// определяет класс View, который представляет собой 
+// простой компонент для взаимодействия с пользовательским интерфейсом (UI) в веб-приложении. 
+
 export class View {
-  public root!: HTMLElement;
-  public querySelector: HTMLElement['querySelector'] | null;
-  public querySelectorAll: HTMLElement['querySelectorAll'] | null;
-  [name: string]: any;
+  public root!: HTMLElement; // Корневой элемент, к которому будет привязана визуальная часть
+
+  // root: Это публичное свойство, представляющее корневой элемент, 
+  //к которому будет привязана визуальная часть представления. Обычно это элемент DOM.
+
+  public querySelector: HTMLElement['querySelector'] | null; // Функция querySelector для поиска элементов внутри корневого элемента
+  public querySelectorAll: HTMLElement['querySelectorAll'] | null; // Функция querySelectorAll для поиска нескольких элементов внутри корневого элемента
+
+  // Индексированное свойство: Оно позволяет классу иметь любые другие свойства, 
+  // не объявленные явно. Это может быть удобно для работы с динамическими данными.
+
+  [name: string]: any; // Индексированное свойство для обращения к любым другим свойствам класса
+
+  // querySelector и querySelectorAll: Эти свойства представляют собой 
+  // ссылки на методы querySelector и querySelectorAll элемента HTMLElement, 
+  // которые позволяют искать элементы внутри корневого элемента. 
+  // В данном случае они инициализируются значением null.
 
   constructor() {
-    this.querySelector = null;
+    this.querySelector = null; // Инициализация querySelector
     this.querySelectorAll = null;
   }
 
+  // bindModel: Это метод, который связывает модель данных с представлением. 
+  // Он принимает объект model, представляющий данные, и обновляет элементы представления 
+  // (например, текстовые поля) значениями из модели.
+
+  // Метод для связывания модели с представлением
   bindModel(this: any, model: any) {
+    // Для каждого свойства модели
     Object.keys(model).forEach((k) => {
+      // Если такое свойство существует в представлении
       if (this[k] != null) {
+        // Присвоить значение свойства модели в соответствующий элемент представления
         this[k].innerText = model[k];
       }
     });

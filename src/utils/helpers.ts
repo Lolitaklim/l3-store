@@ -1,3 +1,8 @@
+// genUUID: Эта функция генерирует уникальный идентификатор (UUID). 
+// Она использует текущее время в миллисекундах и, если доступно, производительность браузера, 
+// чтобы создать случайное значение. Затем она заменяет определенные символы в строке шаблона 
+// на случайные значения, чтобы создать UUID.
+
 export const genUUID = () => {
     let d = new Date().getTime();
     if (window.performance && typeof window.performance.now === 'function') {
@@ -10,6 +15,13 @@ export const genUUID = () => {
     });
 }
 
+// addElement: Эта функция добавляет новый HTML-элемент в указанный родительский элемент. 
+// Она принимает три аргумента: родительский элемент (parent), тип добавляемого элемента (tag) 
+// и опциональные параметры (options), которые могут содержать свойства и значения для добавляемого 
+// элемента. Функция создает новый элемент с помощью document.createElement, 
+// применяет опциональные параметры к элементу с помощью Object.assign, добавляет его к родительскому 
+// элементу и возвращает созданный элемент.
+
 export const addElement = (parent: HTMLElement, tag: string, options?: object) => {
   const element = document.createElement(tag) as HTMLElement;
 
@@ -19,6 +31,10 @@ export const addElement = (parent: HTMLElement, tag: string, options?: object) =
 
   return element;
 };
+
+// formatPrice: Эта функция принимает цену в копейках и форматирует её в строку 
+// с разделителем тысяч и символом российского рубля (₽). 
+// Например, если цена равна 123456789, функция вернет строку "123 456 ₽".
 
 export const formatPrice = (price: number) => {
   return (
