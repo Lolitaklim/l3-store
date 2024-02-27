@@ -4,6 +4,7 @@ import { formatPrice } from '../../utils/helpers';
 import { ProductData } from 'types';
 import html from './productDetail.tpl.html';
 import { cartService } from '../../services/cart.service';
+import { favoritesService } from '../../services/favorites.service';
 
 class ProductDetail extends Component {
   more: ProductList;
@@ -33,9 +34,13 @@ class ProductDetail extends Component {
     this.view.price.innerText = formatPrice(salePriceU);
     this.view.btnBuy.onclick = this._addToCart.bind(this);
 
+    this.view.btnFavorites.onclick = this._addToFavorites.bind(this);
+
     const isInCart = await cartService.isInCart(this.product);
+    const isInFavorites = await favoritesService.isInCart(this.product);
 
     if (isInCart) this._setInCart();
+    if (isInFavorites) this._setInFavorites();
 
     fetch(`/api/getProductSecretKey?id=${id}`)
       .then((res) => res.json())
@@ -60,6 +65,18 @@ class ProductDetail extends Component {
   private _setInCart() {
     this.view.btnBuy.innerText = '✓ В корзине';
     this.view.btnBuy.disabled = true;
+  }
+
+  private _addToFavorites() {
+    if (!this.product) return;
+
+    favoritesService.addProduct(this.product);
+    this._setInFavorites();
+  }
+
+  private _setInFavorites() {
+    this.view.btnFavorites.innerText = '✓ В избранном';
+    this.view.btnFavorites.disabled = true;
   }
 }
 

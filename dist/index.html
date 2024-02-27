@@ -11,10 +11,13 @@
     <div class="header__in">
       <a href="/" class="logo">Mockberries</a>
       <a href="/catalog">Каталог</a>
-      <!-- если нет избранного не выводить -->
-      <a href="/favorites">Избранное</a>
 
       <div class="header__buttons">
+        <!-- если нет избранного не выводить -->
+        <a href="/favorites" class="cart">
+          Избранное
+          <span class="cartCounter js__favorites-counter"></span>
+        </a>
         <a href="/checkout" class="cart">
           Корзина
           <span class="cartCounter js__cart-counter"></span>
