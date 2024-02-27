@@ -43,6 +43,13 @@ class FavoritesService {
 
     //@ts-ignore
     document.querySelectorAll('.js__favorites-counter').forEach(($el: HTMLElement) => ($el.innerText = String(count || '')));
+
+    const favoritesLink = document.querySelector('.js__favorites') as HTMLElement;
+    if (products.length > 0) {
+      favoritesLink.style.display = 'block';
+    } else {
+      favoritesLink.style.display = 'none';
+    }
   }
 }
 
