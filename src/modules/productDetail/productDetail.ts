@@ -5,6 +5,8 @@ import { ProductData } from 'types';
 import html from './productDetail.tpl.html';
 import { cartService } from '../../services/cart.service';
 
+import { eventService } from '../../services/event.service';
+
 class ProductDetail extends Component {
   more: ProductList;
   product?: ProductData;
@@ -50,8 +52,10 @@ class ProductDetail extends Component {
       });
   }
 
-  private _addToCart() {
+  private async _addToCart() {
     if (!this.product) return;
+
+    eventService.sendEvent('addToCard', this.product);
 
     cartService.addProduct(this.product);
     this._setInCart();

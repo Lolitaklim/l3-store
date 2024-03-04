@@ -4,6 +4,8 @@ import { homepageComp } from './modules/homepage/homepage';
 import { productDetailComp } from './modules/productDetail/productDetail';
 import { checkoutComp } from './modules/checkout/checkout';
 
+import { eventService } from './services/event.service';
+
 const ROUTES = {
   '/': homepageComp,
   '/catalog': catalogComp,
@@ -30,5 +32,7 @@ export default class Router {
 
     component.attach(this.$appRoot);
     component.render();
+
+    eventService.sendEvent('route', { url: window.location.pathname });
   }
 }
