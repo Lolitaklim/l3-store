@@ -4,6 +4,8 @@ import html from './homepage.tpl.html';
 
 import { ProductList } from '../productList/productList';
 
+import { userService } from '../../services/user.service'; 
+
 class Homepage extends Component {
   popularProducts: ProductList;
 
@@ -15,15 +17,18 @@ class Homepage extends Component {
   }
 
   render() {
-    fetch('/api/getPopularProducts', {
+
+    userService.getId().then(userId => {
+      fetch('/api/getPopularProducts', {
         headers: {
-          'x-userid': window.userId,
+          'UserID': userId,
         }
-  })
+      })
       .then((res) => res.json())
       .then((products) => {
         this.popularProducts.update(products);
       });
+    });
 
     const isSuccessOrder = new URLSearchParams(window.location.search).get('isSuccessOrder');
     if (isSuccessOrder != null) {
