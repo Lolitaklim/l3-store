@@ -1,0 +1,46 @@
+.searchTips {
+  width: 100%;
+  max-width: 788px;
+  // outline: 1px solid #ef0a0a;
+  background: white;
+  padding-left: 4px;
+  padding-right: 4px;
+  
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    .item {
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 24px;
+      padding: 2px 6px 7px 6px;  
+    }
+
+    .highlighted {
+      cursor: pointer;
+      background-color: var(--plate-color);
+      border-radius: 8px;
+      padding: 2px 5px 7px 5px;       
+      
+      span {
+        background-image: linear-gradient(92.97deg, #DA15B8 4.93%, #8D06CC 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+        &:hover {
+        background-color: #eeecec;
+      }
+    }
+  }
+}
+
+  
+    
+  
+  
