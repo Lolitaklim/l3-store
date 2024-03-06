@@ -3,7 +3,7 @@ import { ProductData } from 'types';
 
 const DB = '__wb-cart';
 
-class CartService {
+export class CartService {
   init() {
     this._updCounters();
   }
@@ -37,7 +37,7 @@ class CartService {
     return products.some(({ id }) => id === product.id);
   }
 
-  private async _updCounters() {
+  protected async _updCounters() {
     const products = await this.get();
     const count = products.length >= 10 ? '9+' : products.length;
 

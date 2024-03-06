@@ -1,43 +1,26 @@
 import localforage from 'localforage';
 import { ProductData } from 'types';
+import { CartService } from "./cart.service";
 
-const DB = '__wb-favorites';
+const FAVORITES_DB = '__wb-favorites';
 
-class FavoritesService {
-  init() {
-    this._updCounters();
-  }
-
-  async addProduct(product: ProductData) {
-    const products = await this.get();
-    await this.set([...products, product]);
-  }
-
-  async removeProduct(product: ProductData) {
-    const products = await this.get();
-    await this.set(products.filter(({ id }) => id !== product.id));
-  }
-
+class FavoritesService extends CartService{
+ 
   async clear() {
-    await localforage.removeItem(DB);
+    await localforage.removeItem(FAVORITES_DB);
     this._updCounters();
   }
 
   async get(): Promise<ProductData[]> {
-    return (await localforage.getItem(DB)) || [];
+    return (await localforage.getItem(FAVORITES_DB)) || [];
   }
 
   async set(data: ProductData[]) {
-    await localforage.setItem(DB, data);
+    await localforage.setItem(FAVORITES_DB, data);
     this._updCounters();
   }
 
-  async isInCart(product: ProductData) {
-    const products = await this.get();
-    return products.some(({ id }) => id === product.id);
-  }
-
-  private async _updCounters() {
+  protected async _updCounters() {
     const products = await this.get();
     const count = products.length >= 10 ? '9+' : products.length;
 
