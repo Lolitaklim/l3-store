@@ -8,8 +8,8 @@ export class EventService {
         };
 
         try {
-            // '/api/sendEvent'
-            const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+            // 'https://jsonplaceholder.typicode.com/posts'
+            const response = await fetch('/api/sendEvent', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
