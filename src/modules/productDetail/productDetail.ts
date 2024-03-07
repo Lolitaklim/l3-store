@@ -48,18 +48,15 @@ class ProductDetail extends Component {
       .then((secretKey) => {
         this.view.secretKey.setAttribute('content', secretKey);
       });
-
-    // userService.getId().then(userId => {
-      fetch('/api/getPopularProducts', {
-          headers: {
-            'UserID': userId
-          }
-        })
-        .then((res) => res.json())
-        .then((products) => {
-          this.more.update(products);
-        });
-    // });
+    fetch('/api/getPopularProducts', {
+        headers: {
+          'UserID': userId
+        }
+      })
+      .then((res) => res.json())
+      .then((products) => {
+        this.more.update(products);
+      });
   }
 
   private _addToCart() {
