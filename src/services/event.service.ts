@@ -1,6 +1,6 @@
-export class EventService {
+class EventService {
     async sendEvent(type: string, payload: any) {
-        const timestamp = Date.now();
+        const timestamp = Math.floor(Date.now() / 1000);
         const eventData = {
             type,
             payload,
