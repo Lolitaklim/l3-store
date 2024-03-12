@@ -37,7 +37,7 @@ export class CartService {
     return products.some(({ id }) => id === product.id);
   }
 
-  protected async _updCounters() {
+  private async _updCounters() {
     const products = await this.get();
     const count = products.length >= 10 ? '9+' : products.length;
 

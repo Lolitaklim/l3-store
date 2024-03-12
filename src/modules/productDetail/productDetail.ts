@@ -60,7 +60,7 @@ class ProductDetail extends Component {
 
     cartService.addProduct(this.product);
     this._setInCart();
-  }
+  } 
 
   private _setInCart() {
     this.view.btnBuy.innerText = '✓ В корзине';
@@ -75,7 +75,7 @@ class ProductDetail extends Component {
   }
 
   private _setInFavorites() {
-    this.view.btnFavorites.innerText = '✓ В избранном';
+    this.view.linkFavorites.setAttribute('xlink:href', '#paintedheart');
     this.view.btnFavorites.disabled = true;
   }
 }
