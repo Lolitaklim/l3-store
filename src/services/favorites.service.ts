@@ -34,9 +34,9 @@ class FavoritesService {
 
     const favoritesLink = document.querySelector('.js__favorites') as HTMLElement;
     if (products.length > 0) {
-      favoritesLink.style.display = 'block';
+      favoritesLink.classList.remove('hide');
     } else {
-      favoritesLink.style.display = 'none';
+      favoritesLink.classList.add('hide'); 
     }
   }
 }
