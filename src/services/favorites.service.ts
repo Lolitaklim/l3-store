@@ -1,11 +1,15 @@
 import localforage from 'localforage';
 import { ProductData } from 'types';
-import { CartService } from './cart.service';
 const FAVORITES_DB = '__wb-favorites';
 
-class FavoritesService extends CartService{
+class FavoritesService {
   init() {
     this._updCountersFavorites();
+  }
+
+  async addProduct(product: ProductData) {
+    const products = await this.get();
+    await this.set([...products, product]);
   }
  
   async get(): Promise<ProductData[]> {
@@ -15,6 +19,11 @@ class FavoritesService extends CartService{
   async set(data: ProductData[]) {
     await localforage.setItem(FAVORITES_DB, data);
     this._updCountersFavorites();
+  }
+
+  async isInFavorites(product: ProductData) {
+    const products = await this.get();
+    return products.some(({ id }) => id === product.id);
   }
 
   private async _updCountersFavorites() {
