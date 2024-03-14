@@ -3,7 +3,7 @@ import { ProductData } from 'types';
 
 const DB = '__wb-cart';
 
-export class CartService {
+class CartService {
   init() {
     this._updCounters();
   }
