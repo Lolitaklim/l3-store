@@ -1,7 +1,7 @@
 import localforage from 'localforage';
 import { ProductData } from 'types';
 const FAVORITES_DB = '__wb-favorites';
-
+// тест
 class FavoritesService {
   init() {
     this._updCountersFavorites();
