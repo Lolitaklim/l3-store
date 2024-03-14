@@ -35,6 +35,7 @@
       
       span {
         background-image: linear-gradient(92.97deg, #DA15B8 4.93%, #8D06CC 100%);
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
