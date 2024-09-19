@@ -21,8 +21,7 @@ branch feature-event-analytics
 Поддерживаемые события:
 Переход по страницам (type: route)
 Просмотр товара в списке товаров (type: viewCard или viewCardPromo для промо-товаров)
-Добавление товара в корзину (type: addToCard)![demo (1)](https://github.com/user-attachments/assets/3c3d749c-d0b1-41aa-b769-8127832291f8)
-
+Добавление товара в корзину (type: addToCard)
 Оформление заказа (type: purchase)
 Формат отправляемого события:
 {
@@ -38,3 +37,5 @@ branch WBX-1935-new-catalog-headers
 ## 5. Поисковые подсказки
 branch feature-search-tips
 Сверстан модуль поисковых подсказок, который будет интегрирован на новую страницу поиска. Использованы системные шрифты проекта, так как платный шрифт ещё не приобретён. Модуль подготовлен для тестирования дизайнерами и разработчиками.
+
+![demo (1)](https://github.com/user-attachments/assets/3c3d749c-d0b1-41aa-b769-8127832291f8)
