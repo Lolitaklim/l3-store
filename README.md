@@ -7,7 +7,7 @@
 `npm install`
 ```
 ```bash
-`npm run dev`s
+`npm run dev`
 ```
 
 # Выполненные задачи
