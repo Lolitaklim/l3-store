@@ -4,10 +4,10 @@
 
 ## Установка и запуск
 ```bash
-`npm install`
+npm install
 ```
 ```bash
-`npm run dev`
+npm run dev
 ```
 
 # Выполненные задачи
